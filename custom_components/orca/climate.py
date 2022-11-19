@@ -1,4 +1,4 @@
-from homeassistant.const import ATTR_TEMPERATURE, TEMP_CELSIUS
+from homeassistant.const import TEMP_CELSIUS
 from logging import getLogger
 from homeassistant.components.climate import ClimateEntity
 from homeassistant.core import callback
@@ -62,8 +62,8 @@ class OrcaClimate(CoordinatorEntity, ClimateEntity):
         """Handle updated data from the coordinator."""
         self._attr_current_temperature = self.coordinator.data['2_Temp_Prostora'].value
 
-        floor_heating_24h_schedule = self.coordinator.data['2_Timer_MK1_24_ur'].value
-        if floor_heating_24h_schedule:
+        floor_heating_24h_schedule = self.coordinator.data['2_Izbira_TIMERJA_MK1'].value
+        if floor_heating_24h_schedule == "24 hours":
             self._attr_target_temperature = self.coordinator.data['2_Temp_prostor_dnevna'].value
             self._attr_supported_features = ClimateEntityFeature.TARGET_TEMPERATURE
         else:

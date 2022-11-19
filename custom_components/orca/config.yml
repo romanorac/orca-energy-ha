@@ -126,11 +126,17 @@
     1: "heating"
     2: "cooling"
 
-2_Timer_MK1_24_ur:
+2_Izbira_TIMERJA_MK1:
   name: "HP Floor heating 24h schedule"
   name_si: "TC 24 urni rezim delovanja talno gretje"
   description: "Ali talno gretje deluje v 24urnem nacinu"
-  type: "boolean"
+  value_map:
+      0: "24 hours"
+      1: "time regime 1"
+      2: "time regime 2"
+      3: "time regime 3"
+      4: "time regime 4"
+      5: "time regime 5"
 
 2_MK1_vklop:
   name: "HP Floor heating"
