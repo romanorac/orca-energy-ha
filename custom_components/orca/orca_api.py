@@ -138,7 +138,10 @@ class Sensor:
 
     @staticmethod
     def parse_temperature(value):
-        return value/10
+        value = Sensor.float_int_check(value)
+        if isinstance(value, (int, float)):
+            return value / 10
+
 
     @staticmethod
     def parse_boolean(value):
