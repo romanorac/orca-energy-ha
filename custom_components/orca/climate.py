@@ -1,4 +1,4 @@
-from homeassistant.const import ATTR_TEMPERATURE, TEMP_CELSIUS
+from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
 from logging import getLogger
 from homeassistant.components.climate import ClimateEntity
 from homeassistant.core import callback
@@ -45,7 +45,7 @@ class OrcaClimate(CoordinatorEntity, ClimateEntity):
         self.coordinator = coordinator
         self._attr_name = 'orca_hp'
         self._attr_unique_id = 'b53d1ef8-17b9-49ca-8c82-73f16a4b9b5a'
-        self._attr_temperature_unit = TEMP_CELSIUS
+        self._attr_temperature_unit = UnitOfTemperature.CELSIUS
         self._attr_current_temperature = float()
         self._attr_target_temperature = float()
         self._attr_target_temperature_high = float()
@@ -55,6 +55,7 @@ class OrcaClimate(CoordinatorEntity, ClimateEntity):
         self._attr_hvac_modes = [HVACMode.OFF, HVACMode.HEAT, HVACMode.COOL, HVACMode.HEAT_COOL]
         self._attr_hvac_action = HVACAction.IDLE 
         self._attr_supported_features = ClimateEntityFeature.TARGET_TEMPERATURE | ClimateEntityFeature.TARGET_TEMPERATURE_RANGE
+        self._enable_turn_on_off_backwards_compatibility = False
 
     @callback
     def _handle_coordinator_update(self) -> None:
